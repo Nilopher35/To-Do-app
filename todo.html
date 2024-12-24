@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo.com</title>
+</head>
+<body>
+    <h2 id="todolist">ToDo List</h2>
+    <div>
+        <input id="inpbox" type="text">
+        <button id="inpbtn">add task</button>
+    </div>
+    <ul id="tasklist"></ul>
+
+    <h3>Completed</h3>
+    <ul id="donelist"></ul>
+
+</body>
+<script>
+    let inpbtn=document.getElementById('inpbtn');
+    let inpbox=document.getElementById('inpbox');
+    let templist=[];
+    let tasklist=document.getElementById('tasklist')
+    let donlist=document.getElementById('donelist')
+    inpbtn.addEventListener('click',(event)=>{
+        // console.log(inpbox.value);
+        if(inpbox.value != '' ){
+        templist.push(inpbox.value)
+        // console.log(list)
+       tasklist.innerHTML+='<li id="+(templist.length - 1)+"> <button onclick="complete('+(templist.length - 1)+')">'+inpbox.value+ '</button> </li>'
+       inpbox.value=''}
+
+    }); 
+    function complete(id){
+        donlist.innerHTML+='<li>'+templist[id]+'</li>'
+        document.getElementById(id).style.display="none"
+    
+
+    }
+
+
+</script> 
+</html>
